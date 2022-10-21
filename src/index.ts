@@ -22,14 +22,6 @@ AppDataSource.initialize().then(async () => {
         })
     })
 
-    app.get('/index', (request, response) => {
-        response.render('index', {
-          subject: 'Homepage',
-          name: 'our template',
-          link: 'https://google.com'
-        });
-      });
-
     const PORT = process.env.PORT || 3000;
     app.listen(PORT)
 

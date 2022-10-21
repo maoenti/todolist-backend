@@ -18,20 +18,11 @@ export class UsersController {
         return this.userRepository.save(request.body)
     }
 
-    // async update(request: Request, response: Response, next: NextFunction) {
-    //     const updUser = await this.userRepository.findOneByOrFail({ id: request.params.id })
-    //     updUser.taskName = updUser.taskName == request.body.taskName ? updUser.taskName : request.body.taskName
-    //     updUser.deadline = updUser.deadline == request.body.deadline ? updUser.deadline : request.body.deadline
-    //     updUser.isDone = updUser.isDone == request.body.isDone ? updUser.isDone : request.body.isDone
-    //     await this.userRepository.update(
-    //         { id: request.params.id }, 
-    //         {
-    //             isDone: updUser.isDone,
-    //             taskName: updUser.taskName, 
-    //             deadline: updUser.deadline
-    //         })
-    //     return this.userRepository.findOneByOrFail({id: request.params.id})
-    // }
+    async update(request: Request, response: Response, next: NextFunction) {
+        await this.userRepository.findOneByOrFail({ id: request.params.id })
+        await this.userRepository.update({ id: request.params.id }, request.body)
+        return this.userRepository.findOneByOrFail({id: request.params.id})
+    }
 
     async remove(request: Request, response: Response, next: NextFunction) {
         const userToRemove = await this.userRepository.findOneByOrFail({ id: request.params.id })

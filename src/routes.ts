@@ -53,12 +53,12 @@ export const Routes = [
         controller: UsersController,
         action: "save"
     },
-    // {
-    //     method: "put",
-    //     route: "/users/:id",
-    //     controller: UsersController,
-    //     action: "update"
-    // },
+    {
+        method: "put",
+        route: "/users/:id",
+        controller: UsersController,
+        action: "update"
+    },
     {
         method: "delete",
         route: "/users/:id",
