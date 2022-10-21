@@ -7,13 +7,9 @@ const path = require('path')
 
 AppDataSource.initialize().then(async () => {
 
-    // create express app
     const app = express()
     app.use(bodyParser.json())
-    app.set('view engine', 'ejs');
-    app.set('views', path.join(__dirname, 'views'));
 
-    // register express routes from defined application routes
     Routes.forEach(route => {
         (app as any)[route.method](route.route, async (req: Request, res: Response, next: Function) => {
             try{
@@ -26,7 +22,6 @@ AppDataSource.initialize().then(async () => {
         })
     })
 
-    // setup express app here
     app.get('/index', (request, response) => {
         response.render('index', {
           subject: 'Homepage',
@@ -35,7 +30,6 @@ AppDataSource.initialize().then(async () => {
         });
       });
 
-    // start express server
     const PORT = process.env.PORT || 3000;
     app.listen(PORT)
 
