@@ -1,18 +1,16 @@
-import { Entity, PrimaryGeneratedColumn, Column } from "typeorm"
+import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
 
 @Entity()
 export class Task {
+  @PrimaryGeneratedColumn()
+  id: number;
 
-    @PrimaryGeneratedColumn()
-    id: number
+  @Column()
+  taskName: string;
 
-    @Column()
-    taskName: string
+  @Column()
+  deadline: Date;
 
-    @Column()
-    deadline: Date
-
-    @Column()
-    isDone: boolean
-
+  @Column()
+  isDone: boolean;
 }
