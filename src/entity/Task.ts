@@ -2,10 +2,13 @@ import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
 
 @Entity()
 export class Task {
-  @PrimaryGeneratedColumn()
-  id: number;
+  @PrimaryGeneratedColumn("uuid")
+  id: string;
 
-  @Column()
+  @Column({
+    type: "varchar",
+    length: 255,
+  })
   taskName: string;
 
   @Column()
